@@ -1,6 +1,9 @@
 +++
 title = "Google Cloud trial using BPI debit mastercard"
+description = ""
 date = 2021-06-02
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Start Google Cloud trial using BPI debit mastercard.

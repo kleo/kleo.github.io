@@ -1,6 +1,9 @@
 +++
 title = "My first experience & troubleshoot on Linux"
+description = ""
 date = 2024-08-15
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I still have this note dated 2013-07-04 named grub.txt.           

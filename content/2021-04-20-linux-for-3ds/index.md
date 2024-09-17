@@ -1,6 +1,9 @@
 +++
 title = "Linux for 3DS"
+description = ""
 date = 2021-04-20
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Previous efforts by Sergi Granell ([xerpi](https://github.com/xerpi)) on [Linux for the 3DS](https://gbatemp.net/threads/release-linux-for-the-3ds.407187/) is now continued at [Linux for 3DS](https://github.com/linux-3ds). I discovered them on this [Reddit post](https://old.reddit.com/r/3dshacks/comments/mocfod/want_to_learn_how_to_load_linux_on_your_3ds/).

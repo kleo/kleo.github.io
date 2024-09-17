@@ -1,6 +1,9 @@
 +++
 title = "Termux Selfhost Android 5 and 6 Legacy Packages"
+description = ""
 date = 2022-03-11
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Termux Selfhost Android 5 and 6 Legacy Packages

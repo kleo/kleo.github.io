@@ -1,6 +1,9 @@
 +++
 title = "USB powered Xperia C5 Ultra"
+description = ""
 date = 2021-04-02
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 A little history on this phone

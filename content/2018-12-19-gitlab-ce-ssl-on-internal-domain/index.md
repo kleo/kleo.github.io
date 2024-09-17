@@ -1,6 +1,9 @@
 +++
 title = "GitLab-CE SSL on Internal Domain"
+description = ""
 date = 2018-12-19
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Setting up GitLab-CE with SSL on a Docker container for a internal domain. 

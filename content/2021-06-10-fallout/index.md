@@ -1,6 +1,9 @@
 +++
 title = "Fallout"
+description = ""
 date = 2021-06-10
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I'm a big fan of the Fallout universe and our office recently had acquired a couple of 3D printers.

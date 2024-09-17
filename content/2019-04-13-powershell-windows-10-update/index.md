@@ -1,6 +1,9 @@
 +++
 title = "Powershell Windows 10 update"
+description = ""
 date = 2019-04-13
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Windows 10 upgrade woes

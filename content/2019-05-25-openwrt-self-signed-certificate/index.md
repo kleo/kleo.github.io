@@ -1,6 +1,9 @@
 +++
 title = "OpenWrt self signed certificate"
+description = ""
 date = 2019-05-25
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Secure your connection to your openwrt router on lan using a self signed certificate.

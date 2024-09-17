@@ -1,6 +1,9 @@
 +++
 title = "Sony Xperia C5 Ultra bootless root"
+description = ""
 date = 2021-06-11
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 

@@ -1,6 +1,9 @@
 +++
 title = "Sony DSC-HX100V clean HDMI capture"
+description = ""
 date = 2022-10-08
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I wanted to try out our family's old camera, a Sony DSC-HX100V as a desktop camera. 

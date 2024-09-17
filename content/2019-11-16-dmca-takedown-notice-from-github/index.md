@@ -1,6 +1,9 @@
 +++
 title = "DMCA takedown notice from Github"
+description = ""
 date = 2019-11-16
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I received a DMCA notice for my Github repository kbeflo/evilportals, it has phishing pages that uses trademarks from multiple companies without permission.

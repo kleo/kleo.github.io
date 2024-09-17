@@ -1,6 +1,9 @@
 +++
 title = "OpenWrt Unifi AP AC Lite"
+description = ""
 date = 2021-05-05
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Time to separate my Unifi AP AC Lite from my previous project [unipi](https://github.com/kleo/unipi).

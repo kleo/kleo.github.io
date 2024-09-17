@@ -1,6 +1,9 @@
 +++
 title = "Switch Hacking"
+description = ""
 date = 2021-06-17
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I purchased my Nintendo Switch at 2018-10-06

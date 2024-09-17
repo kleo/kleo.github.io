@@ -1,6 +1,9 @@
 +++
 title = "PLDT Home Fiber router hacking"
+description = ""
 date = 2018-05-20
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 A walkthrough on my current progress on hacking the PLDT FIBR AN5506-04-FA router RP2616.

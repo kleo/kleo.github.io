@@ -1,6 +1,9 @@
 +++
 title = "Sony Xperia XZ1 Compact LineageOS"
+description = ""
 date = 2019-05-12
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Installed LineageOS 16 RC1 and it gave a new life to my phone.

@@ -1,6 +1,9 @@
 +++
 title = "Copying files over Tor using torsocks and scp"
+description = ""
 date = 2018-09-26
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 If you haven't setup a Tor service on machine follow the link below.

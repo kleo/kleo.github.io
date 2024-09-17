@@ -1,6 +1,9 @@
 +++
 title = "Disable PROLiNK H5004NK TR-069/CWMP"
+description = ""
 date = 2021-08-15
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 This was one of the routers from Globe a local ISP here in the Philippines when ADSL was still the standard. I still have a couple in use as access points.

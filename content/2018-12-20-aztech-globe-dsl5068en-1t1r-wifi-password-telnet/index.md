@@ -1,6 +1,9 @@
 +++
 title = "Aztech Globe DSL5068EN-1T1R WiFi Password Telnet"
+description = ""
 date = 2018-12-20
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Aztech Globe DSL5068EN-1T1R WiFi Password using telnet

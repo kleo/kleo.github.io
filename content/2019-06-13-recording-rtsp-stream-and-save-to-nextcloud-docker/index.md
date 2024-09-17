@@ -1,6 +1,9 @@
 +++
 title = "Recording rtsp stream and save to Nextcloud Docker"
+description = ""
 date = 2019-06-13
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Assuming you have already setup Nextcloud Docker

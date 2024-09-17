@@ -1,6 +1,9 @@
 +++
 title = "PLDT Home Fiber web interface admin access"
+description = ""
 date = 2018-09-09
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Enable web interface admin access for advanced configuration, port forwarding, and more.

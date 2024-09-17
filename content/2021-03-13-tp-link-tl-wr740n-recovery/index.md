@@ -1,6 +1,9 @@
 +++
 title = "TP-Link TL-WR740N Recovery"
+description = ""
 date = 2021-03-13
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 I have an old TP-Link TL-WR740N that was given to me by a friend. After installing OpenWrt I used it as a wireless client to bridge internet connection next door. 

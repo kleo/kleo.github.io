@@ -1,6 +1,9 @@
 +++
 title = "Self-signed Certificates for Plex Media Server"
+description = ""
 date = 2019-04-14
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Create key and certificate
