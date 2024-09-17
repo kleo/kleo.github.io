@@ -1,0 +1,3 @@
+[submodule "themes/the-monospace-web"]
+	path = themes/the-monospace-web
+	url = git@github.com:kleo/the-monospace-web.git
