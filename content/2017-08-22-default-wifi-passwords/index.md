@@ -3,7 +3,6 @@ title = "Default WiFi passwords"
 description = ""
 date = 2017-08-22
 lang = "en"
-toc-title = "Contents"
 extra = { version = "v0.1" }
 +++
 
