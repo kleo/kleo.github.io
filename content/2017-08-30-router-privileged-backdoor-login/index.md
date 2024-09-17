@@ -1,35 +1,38 @@
 +++
 title = "Router Privileged Backdoor Login"
+description = ""
 date = 2017-08-30
+lang = "en"
+extra = { version = "v0.1" }
 +++
 
 Tired of always asking for the WiFi password? Well here in the Philippines, routers come with privileged backdoor login, where we can access the router's configuration, where we can set the WiFi network name(SSID) or even change the WiFi password, or just view the current configuration, such as the WiFi password in plain text.
 
 The vulnerability exists between common routers used in the Philippines, these are the **Globe PROLiNK H5004NK** and the **PLDT BaudTec RN243R4-2T2R-A6**.
 
-### Physical access attack
+## Physical access attack
 
 Physical access is a term in computer security that refers to the ability of people to physically gain access to a computer system. The best network software security measures can be rendered useless if you fail to physically protect your systems.
 
-### Scenario
+## Scenario
 
 We will need to have physical access to a computer already connected to the network. This can commonly be found on homes, internet cafes, and workplace networks where the router isn't secured behind a firewall.
 
 They come with an open ssh service on port 22, with default usernames and passwords. An added bonus is that these accounts' passwords cannot be changed and cannot be removed, so we can use them to login to any of these routers at any time we want.
 
-### Globe PROLiNK H5004NK
+## Globe PROLiNK H5004NK
 
 ![](01.png)
 
 XXXX being the last 4 characters of the device's MAC address.
 
-### PLDT BaudTec RN243R4-2T2R-A6
+## PLDT BaudTec RN243R4-2T2R-A6
 
 ![](02.png)
 
 XXXX being the last 4 characters of the device's MAC address.
 
-### Accessing the the router's command line interface
+## Accessing the the router's command line interface
 
 You can find the router's IP address on Windows using cmd, then entering `ipconfig` command, normally this would be the default gateway on most unsecured networks.
 
