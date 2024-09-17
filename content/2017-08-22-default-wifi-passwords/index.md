@@ -1,7 +1,13 @@
 +++
 title = "Default WiFi passwords"
+description = ""
 date = 2017-08-22
+lang = "en"
+toc-title = "Contents"
+extra = { version = "v0.1" }
 +++
+
+## Introduction
 
 Living today without WiFi disconnects us from the world. While there are so many WiFi access points all around us, we can't connect to them because they're secured with a password, but we won't bother asking for the WiFi password.
 
@@ -23,7 +29,7 @@ After scanning, we can view the router's Service Set Identifier (SSID) or the na
 
 We can now use that to connect to our prefered WiFi access point.
 
-### PLDT ZXHN H108N
+## PLDT ZXHN H108N
 
 Using PingTools WiFi scanner, we can see the MAC address of the router and we can now identify the router's default WiFi password configuration.
 
@@ -41,7 +47,7 @@ Password: PLDTWIFI4A16E
 
 ![](02.png)	
 
-### Iterations on PLDT routers
+## Iterations on PLDT routers
 
 SSID: PLDTHOMEFIBR + 4A16E(Last 5 characters of MAC address uppercase)
 Password: PLDTWIFI + B5E91(Last 5 characters inverted MAC hex value uppercase)
@@ -60,7 +66,7 @@ SSID: HomeBro_Ultera
 Password: HomeBro_ + Last 6 characters inverted MAC hex value 
 Password-Example: HomeBro_CB5E91
 
-#### Inverted MAC hex value
+### Inverted MAC hex value
 
 0 - F
 
@@ -94,7 +100,7 @@ E - 1
 
 F - 0
 
-### EPON ONU
+## EPON ONU
 
 An example with routers that are rearranging parts of the MAC address as default WiFi password.
 
@@ -102,7 +108,7 @@ An example with routers that are rearranging parts of the MAC address as default
 
 ![](04.png)
 
-### Globe PROLiNK H5400NK ADSL Wireless Modem
+## Globe PROLiNK H5400NK ADSL Wireless Modem
 
 On Globe routers, placing the word "WIFI" in between the last 6 characters of its MAC.
 
@@ -115,4 +121,3 @@ On Globe routers, placing the word "WIFI" in between the last 6 characters of it
 A reminder to change your router's passwords folks, enjoy~
 
 References: [Symbianize (Mobilarian)](https://www.mobilarian.com/showthread.php?t=1255249&p=20734036&viewfull=1#post20734036)
-
