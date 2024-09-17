@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">OpenWrt self signed certificate</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2019-05-25</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Secure your connection to your openwrt router on lan using a self signed certificate.</p>
+<p>Setup dnsmasq to point to your router i.e openwrt.home to 192.168.1.x</p>
+<p>Generate a certificate and key using openssl, I'll be using xca.</p>
+<p>After that install luci-ssl</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>opkg install luci-ssl
+</span></code></pre>
+<p>On xca export certificate as a binary DER encoded file, openwrt.home.cer</p>
+<p>and export key as a unencrypted private key in binary DER format.</p>
+<p>Copy files to your router</p>
+<p>Rename openwrt.home.cer to uhttpd.crt</p>
+<p>Rename oepnwrt.home.der to uhttpd.key</p>
+<p>Move uhttpd.crt and uhttpd.key to /etc/</p>
+<p>Restart uhttpd</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>/etc/init.d/uhttpd restart
+</span></code></pre>
+<p>Reload page</p>
+<p>todo: create xca usage guide</p>
+<p>references:</p>
+<p><a href="https://openwrt.org/docs/guide-user/services/webserver/uhttpd#https_enable_and_certificate_settings_and_creation">https://openwrt.org/docs/guide-user/services/webserver/uhttpd#https_enable_and_certificate_settings_and_creation</a></p>
+<p>xca <a href="https://hohnstaedt.de/xca/">https://hohnstaedt.de/xca/</a></p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

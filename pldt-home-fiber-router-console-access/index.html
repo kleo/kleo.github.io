@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">PLDT Home Fiber router console access</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-05-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+<h2 id="toc-title">Contents</h2>
+<ul>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#console-access">Console access</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#requirements">Requirements</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#finding-the-serial-port">Finding the serial port</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#pre-boot-up">Pre boot up</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#booting-up-the-router">Booting up the router</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/pldt-home-fiber-router-console-access/#finally-we-can-dump-parts-of-its-firmware-and-files">Finally we can dump parts of its firmware and files</a>
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+  </ul>
+
+
+<p>Continuation for hacking the PLDT FIBR AN5506-04-FA router RP2616</p>
+<ul>
+<li><a href="/pldt-home-fiber-router-hacking">Hidden urls</a></li>
+<li><a href="#">Console access</a></li>
+<li><a href="/pldt-home-fiber-router-firmware-and-files">Router firmware and files</a></li>
+<li><a href="/pldt-home-fiber-web-interface-admin-access">Admin access</a></li>
+</ul>
+<h2 id="console-access">Console access</h2>
+<p>Looking to find more information about the router, I will guide you on how to gain console access on the router.</p>
+<h2 id="requirements">Requirements</h2>
+<p>A <a href="https://www.lazada.com.ph/products/cp2102-usb-20-to-ttl-uart-module-6-pin-serial-converter-i117001765-s121288330.html">CP2102 USB 2.0 TTL UART module 6 pin serial converter</a> (non-affiliate link), bought from an online store.</p>
+<p>You will also need jumper cables, as they don't come with the CP2102. I just used the ones from my logic analyzer just laying around.</p>
+<p>A Linux based Operating System that has GNU Screen.</p>
+<h2 id="finding-the-serial-port">Finding the serial port</h2>
+<p>First, let's take a look under the hood.</p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-router-console-access/03.jpg" alt="" /></p>
+<p>These are the ports you're looking for</p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-router-console-access/04.jpg" alt="" /></p>
+<p>On the CP2102 connect data+ (white) to TXD, data- (green) to RXD and gnd (black) to GND.</p>
+<p>Avoid the vcc port as you can fry your CP2102 just like I did, bought another 2 after doing that.</p>
+<h1 id="pre-boot-up">Pre boot up</h1>
+<p>Before we can boot up the router we need to plug everything first.</p>
+<p>Start up your Linux Operating System.</p>
+<p>On a terminal enter command <code>sudo screen /dev/ttyUSB0 115200</code> and enter your user password.</p>
+<p>/dev/ttyUSB0 is the CP2102 device and 115200 is the baudrate or speed the terminal sends data to your terminal(?) find resource</p>
+<p>If the command fails most likely it's not already installed you can do <code>sudo apt update</code> and install it using <code>sudo apt install screen</code>.</p>
+<p>After entering the command the terminal will go blank since we still haven't booted the router.</p>
+<h1 id="booting-up-the-router">Booting up the router</h1>
+<p>After plugging in everything, we can now boot the router up.</p>
+<p>There are three prompts available after booting.</p>
+<p>First prompt seems to load the router's firmware</p>
+<p><a href="https://asciinema.org/a/Pz3ra7nE9Zhg5e2XVvRQFh6vI" target="_blank"><img src="https://asciinema.org/a/Pz3ra7nE9Zhg5e2XVvRQFh6vI.png"></a></p>
+<p>The second prompt loads file system but has limited commands available</p>
+<p><a href="https://asciinema.org/a/iqCc3eNqjIlCYlk340100k7yk" target="_blank"><img src="https://asciinema.org/a/iqCc3eNqjIlCYlk340100k7yk.png"></a></p>
+<p>The third prompt will show after a few moments</p>
+<p><a href="https://asciinema.org/a/cdYiyVqQ9zWi5sifomAMltpKQ" target="_blank"><img src="https://asciinema.org/a/cdYiyVqQ9zWi5sifomAMltpKQ.png"></a></p>
+<p>Now we have access to all its directories and files, we can also get additional information about the router and its logs.</p>
+<p>You can also leave the router to boot everything and will work as usual.</p>
+<h4 id="finally-we-can-dump-parts-of-its-firmware-and-files"><a href="/pldt-home-fiber-router-firmware-and-files">Finally we can dump parts of its firmware and files</a></h4>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

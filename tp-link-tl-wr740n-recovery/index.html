@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">TP-Link TL-WR740N Recovery</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2021-03-13</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>I have an old TP-Link TL-WR740N that was given to me by a friend. After installing OpenWrt I used it as a wireless client to bridge internet connection next door.</p>
+<p>Couldn't install much software though with very limited flash storage and no external USB port.</p>
+<p>We removed it some time after I purchased outdoor ethernet cables.</p>
+<p>Thing died probably after an interrupted reset.</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/1.png" alt="" /></p>
+<p>Good thing there was a recovery guide OpenWrt <a href="https://openwrt.org/toh/tp-link/tl-wr740n">TP-Link TL-WR740N</a></p>
+<p>Very dusty</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/2.jpg" alt="" /></p>
+<p>Soldering twisted pair as cables so we can have serial console</p>
+<blockquote>
+<p>TX pin is not connected to the CPU. In order to make the TX line working, the two points on the bottom side of the PCB must be connected with a small wire. The pin at the SOC is labeled TP18, the one at the serial connector is labeled TP28.</p>
+</blockquote>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/3.jpg" alt="" /></p>
+<p>A look at my workbench</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/4.jpg" alt="" /></p>
+<p>Hooking it up to my computer</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/5.jpg" alt="" /></p>
+<p>dnsmasq tftp config</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>dhcp-range=192.168.1.2,192.168.1.254,12h
+</span><span>enable-tftp
+</span><span>tftp-root=/home/kbeflo/tftp
+</span></code></pre>
+<p>start dnsmasq</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>sudo dnsmasq -C tftboot.conf
+</span></code></pre>
+<p>start tftpboot on the device etc.</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/6.png" alt="" /></p>
+<p>Success~</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

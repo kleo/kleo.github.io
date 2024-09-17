@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">PLDT Home Fiber router firmware and files</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-05-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+<h2 id="toc-title">Contents</h2>
+<ul>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-firmware-and-files/#firmware-and-files">Firmware and files</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-firmware-and-files/#preparing-flashdrive">Preparing flashdrive</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-firmware-and-files/#dump">Dump</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-firmware-and-files/#interesting-info-found-on-the-router">Interesting info found on the router</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-firmware-and-files/#acknowledgements">Acknowledgements</a>
+            
+        </li>
+    
+  </ul>
+
+
+<p>Continuation for hacking the PLDT FIBR AN5506-04-FA router RP2616</p>
+<ul>
+<li><a href="/pldt-home-fiber-router-hacking">Hidden urls</a></li>
+<li><a href="/pldt-home-fiber-router-console-access">Console access</a></li>
+<li><a href="#">Router firmware and files</a></li>
+<li><a href="/pldt-home-fiber-web-interface-admin-access">Admin access</a></li>
+</ul>
+<h2 id="firmware-and-files">Firmware and files</h2>
+<p>Now we have console access to the router, we can freely dump files from the device.</p>
+<h2 id="preparing-flashdrive">Preparing flashdrive</h2>
+<p>Format a flashdrive to a FAT32 file system</p>
+<h2 id="dump">Dump</h2>
+<p>Boot up the router first then wait for the third prompt and press Ctrl+C</p>
+<p>After that plugin the flashdrive</p>
+<p>We need to remount the flashdrive so that we can properly copy files from the router</p>
+<p><code>umount /dev/sda1</code></p>
+<p><code>mount /dev/sda1 /dev/shm/usb/media/sda1</code></p>
+<p>Then copy the files using <code>cp</code>, for example</p>
+<p><code>cp uImage /dev/shm/usb/media/sda1</code></p>
+<p><code>cp proc/cpuinfo /dev/shm/usb/media/sda1</code></p>
+<p><code>cp -r fhcfg/ /dev/shm/usb/media/sda1</code></p>
+<p>Preview on the console</p>
+<p><a href="https://asciinema.org/a/FxbkBVUXEEL5jfmcoWw8OTmAi" target="_blank"><img src="https://asciinema.org/a/FxbkBVUXEEL5jfmcoWw8OTmAi.png"></a></p>
+<h2 id="interesting-info-found-on-the-router">Interesting info found on the router</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Linux version `/proc/version`
+</span><span>
+</span><span>Linux version 2.6.34.10 (root@Fedora-server) (gcc version 4.4.6 (crosstool-NG 1.13.2 - hsan-5115) ) #1 SMP PREEMPT Mon Sep 11 15:03:15 CST 2017
+</span><span>
+</span><span>cpuinfo found at `/proc/cpuinfo`
+</span><span>
+</span><span>Processor	: ARMv7 Processor rev 1 (v7l)
+</span><span>processor	: 0
+</span><span>BogoMIPS	: 1395.91
+</span><span>
+</span><span>processor	: 1
+</span><span>BogoMIPS	: 1395.91
+</span><span>
+</span><span>Features	: swp half thumb fastmult edsp 
+</span><span>CPU implementer	: 0x41
+</span><span>CPU architecture: 7
+</span><span>CPU variant	: 0x4
+</span><span>CPU part	: 0xc09
+</span><span>CPU revision	: 1
+</span><span>
+</span><span>Hardware	: sd5115
+</span><span>Revision	: 0000
+</span><span>Serial		: 0000000000000000
+</span></code></pre>
+<p>WiFi configuration found at <code>/fhcfg/fh_wifi/wifictl_2g.cfg</code> and <code>/fhcfg/fh_wifi/wifictl_5g.cfg</code></p>
+<p>Random default WiFi password stored at <code>/fhcfg/fh_wifi/wifipskkey.cfg</code></p>
+<p>Also found all the hidden pages that are available on the web interface. I will include them on the Gist found on <a href="/pldt-home-fiber-router-hacking">Hidden urls</a></p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://hackcorrelation.blogspot.com/2017/07/fiberhome-an5506-02-f-router-hack.html">FiberHome AN5506-02-F router hack</a> by Ligius</p>
+<p><a href="http://jcjc-dev.com/2016/04/08/reversing-huawei-router-1-find-uart/">Practical Reverse Engineering</a> awesome writeup by Juan Carlos Jimenez</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

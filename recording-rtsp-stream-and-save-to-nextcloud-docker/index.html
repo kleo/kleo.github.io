@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Recording rtsp stream and save to Nextcloud Docker</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2019-06-13</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Assuming you have already setup Nextcloud Docker</p>
+<p>Using linuxserver/nextcloud https://hub.docker.com/r/linuxserver/nextcloud/</p>
+<p>I'm using my current directory, you can use it as an example</p>
+<p>Nextcloud Docker volumes are</p>
+<p>Host/volume and Path in container</p>
+<p>/home/kbeflo/nextcloud/data -- /data
+nextcloud_config -- /config</p>
+<p>My /home/kbeflo/nextcloud/data is currently mounted on a separate hard drive</p>
+<p>fstab entry</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx /home/kbeflo/nextcloud/data ext4 defaults 0 1
+</span></code></pre>
+<p>Now lets create a cron job on our server</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>crontab -e
+</span></code></pre>
+<p>Using ffmpeg to record the output of our cctv camera to my nextcloud user directory</p>
+<p>This will make ffmpeg run every hour, on office hours from 8 AM to 5 PM every day</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0 8-17 * * * ffmpeg -i rtsp://192.168.X.X:554/onvif1 -vcodec copy -r 10 -t 3600 -y /home/kbeflo/nextcloud/data/kbeflo/files/cctv/$(date +\%Y\%m\%d\%H).mp4
+</span></code></pre>
+<p>We will now configure our Nextcloud container to look for the new videos so that they could be viewed on your Nextcloud account</p>
+<p>Enter your Nextcloud container shell</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>docker exec -it nextcloud /bin/bash
+</span></code></pre>
+<p>Create cron job on the container that will scan for new files on username kbeflo every hour</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0 * * * * s6-setuidgid abc php7 /config/www/nextcloud/occ files:scan kbeflo
+</span></code></pre>
+<p>Additional configuration would include a cron job to clean up recordings every n days</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0 0 * * 0 find /home/kbeflo/nextcloud/data/kbeflo/files/cctv -mtime +n -type f -delete
+</span></code></pre>
+<p>TAGS:sysadmin</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

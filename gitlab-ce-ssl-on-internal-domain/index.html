@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">GitLab-CE SSL on Internal Domain</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-12-19</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Setting up GitLab-CE with SSL on a Docker container for a internal domain.</p>
+<p>For this setup I used pfSense's Certificate Manager. Created a Certificate Authority and Server Certificates.</p>
+<p>My GitLab-CE Docker container is configured to use a physical/macvlan networking interface or dedicated IP on LAN.</p>
+<p>For DNS I am using Unbound/DNS Resolver on pfSense to point the domain to my internal IP address.</p>
+<p>Have the GitLab-CE container up and running then ssh into it <code>docker exec -it gitlab /bin/bash</code></p>
+<p>Using your favorite editor modify <code>/etc/gitlab/gitlab.rb</code></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>external_url &#39;https://git.example.com&#39;
+</span><span>
+</span><span>postgresql[&#39;ssl_ca_file&#39;] = &#39;/etc/gitlab/trusted-certs/git.example.com.pem&#39;
+</span><span>
+</span><span>nginx[&#39;redirect_http_to_https&#39;] = true
+</span><span>nginx[&#39;redirect_http_to_https_port&#39;] = 80
+</span><span>
+</span><span>nginx[&#39;ssl_certificate&#39;] = &quot;/etc/gitlab/ssl/git.example.com.crt&quot;
+</span><span>nginx[&#39;ssl_certificate_key&#39;] = &quot;/etc/gitlab/ssl/git.example.com.key&quot;
+</span></code></pre>
+<p>Copy the certificate and key to the directories provided above.</p>
+<p>For the <code>postgresql['ssl_ca_file']</code> use the <code>git.example.com.crt</code> rename it to <code>git.example.com.pem</code>.</p>
+<p>Run <code>gitlab-ctl reconfigure</code></p>
+<p>Include the CA on your browsers and make sure to trust the CA.</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">PLDT Home Fiber web interface admin access</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-09-09</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+<h2 id="toc-title">Contents</h2>
+<ul>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/#acknowledgements">Acknowledgements</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/#requirements">Requirements:</a>
+                        </li>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/#caution">Caution:</a>
+                        </li>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/#instructions">Instructions:</a>
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/#screenshots">Screenshots</a>
+            
+        </li>
+    
+  </ul>
+
+
+<p>Enable web interface admin access for advanced configuration, port forwarding, and more.</p>
+<ul>
+<li><a href="/pldt-home-fiber-router-hacking">Hidden urls</a></li>
+<li><a href="/pldt-home-fiber-router-console-access">Console access</a></li>
+<li><a href="/pldt-home-fiber-router-firmware-and-files">Router firmware and files</a></li>
+<li><a href="#">Admin access</a></li>
+</ul>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>To our small <a href="https://gist.github.com/kleo/de3b1610b1879f8e92966ba106f83f97">community</a> that has grown due to the restrictions the ISP has presented to us. Thank you for the efforts and knowledge for this challenge to be completed.</p>
+<p>Guide made by <a href="https://github.com/HexUltimate"><strong>HexUltimate</strong></a> for Windows clients <a href="https://gist.github.com/kleo/de3b1610b1879f8e92966ba106f83f97#gistcomment-2701161">link</a>*</p>
+<p>With minor changes (9.1).</p>
+<p>For Linux clients you can follow console access from the links above to gain console access and follow through the guide from there to here.</p>
+<h3 id="requirements">Requirements:</h3>
+<p>Ability to follow instructions properly.</p>
+<p>Access to the serial port of the AN5506-04-FA router.</p>
+<p>A little bit of patience and a program to communicate through the serial port. The one I used is PuTTY.</p>
+<p>A little bit of technical ability. But I tried to be as user-friendly as possible with this tutorial.</p>
+<p>A <a href="https://www.lazada.com.ph/products/cp2102-usb-20-to-ttl-uart-module-6-pin-serial-converter-i117001765-s121288330.html">CP2102 USB 2.0 TTL UART module 6 pin serial converter</a> (non-affiliate link), bought from a local online store.</p>
+<p>You will also need jumper cables, as they don’t come with the CP2102. I just used the ones from my logic analyzer just laying around.</p>
+<h4 id="risks">Risks:</h4>
+<p>Chances of bricking router if done wrong: 0%, assuming you do not do <code>rm -rf /</code>.</p>
+<h3 id="caution">Caution:</h3>
+<p>If at any time you mess up during this process, the easiest way to start over is by restarting your router by unplugging it.
+Do not do step 13 if you are not confident that you did everything right. Step 13 is the point of no return!
+Characters that are highlighted with red are commands and characters that are in bold are keystrokes.</p>
+<h3 id="instructions">Instructions:</h3>
+<p><strong>1.)</strong> Turn off your AN5506-04-FA router.</p>
+<p><strong>2.)</strong> Open it up, stick in the serial port cables into the port and the converter itself.</p>
+<p><strong>3.)</strong> Plug in your converter into your computer and make sure it's working properly.</p>
+<p><strong>3.1.)</strong> You might need to install a driver if you use the converter linked by @kbeflo. Driver link: <a href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">here</a>.</p>
+<p><strong>4.)</strong> Open up PuTTY, select 'Serial', put in the serial line of your converter, in my case it was 'COM3', put '115200' as the speed, and click Open.
+Don't know what your serial line is? Try COM3 or check Communication Ports in Device Manager. Look for "Silicon Labs CP201x USB to UART Bridge". The characters enclosed in parentheses beside it are the ones you're looking for. (For example, "(COM3)". Use "COM3" as your serial line.)</p>
+<p><strong>5.)</strong> Double-check to make sure you are avoiding the VCC port like the plague. Otherwise, you might fry your converter as well!</p>
+<p><strong>6.)</strong> Cross your fingers and hope nothing catches fire. Power up that router!</p>
+<p><strong>7.)</strong> Immediately you'll be assaulted by boot-up messages. Wait for the 'Press Ctrl+C to stop auto-setup' prompt. You have 2 seconds to do this. Be quick!
+If you react too slow and missed the prompt, turn your router on and off again to start over.</p>
+<p><strong>8.)</strong> You should now be in the linux kernel of your router. Evident by it saying <strong>~ #</strong>. It's now waiting commands from its owner, you! (And not PLDT!)</p>
+<p><strong>9.)</strong> Type this in exactly: <code>cd fhcfg</code>. Press enter.</p>
+<p><strong>9.1.)</strong> By default the configuration file web_accout_enable is a read only file. Set permissions for that file so we can have write access. Using <code>chmod 755 web_accout_enable</code>.</p>
+<p><strong>10.)</strong> Type this in exactly: <code>vi web_accout_enable</code> (<code>vi</code> is a text editor and <code>web_accout_enable</code> is the configuration file). Yes, do not try to autocorrect that typo. The file itself is typoed!</p>
+<p><strong>11.)</strong> We're only interested in the number <strong>0</strong> there. Ignore the rest of the garbage characters. Press <strong>i</strong> on your keyboard to enable editing mode.</p>
+<p><strong>12.)</strong> Press <strong>1</strong> on your keyboard. You can see that the "0" became "10" Delete the "0" by pressing the delete key on your keyboard.</p>
+<p><strong>13.)</strong> Press <strong>Esc</strong> to exit editing mode and re-enter command mode. Type this in exactly: <strong>:wq</strong>. Press enter.</p>
+<p><strong>14.)</strong> Once you see <code>/fhcfg #</code> again, you can now turn off your router, unplug everything, and place the cover again.</p>
+<p><strong>15.)</strong> Make sure that the optical cable is unplugged from the router to not get locked out again immediately after turning the router on! Turn the router on after doing this.</p>
+<p><strong>16.)</strong> Wait for it to finish booting up. Go to your router administrator page <a href="http://192.168.1.1/fh">http://192.168.1.1/fh</a> and log in with these credentials:</p>
+<p><br><b>Administrator:</b> adminpldt</p>
+<p><b>Password:</b> 6GFJdY4aAuUKJjdtSn7dC2x<br><br></p>
+<p><strong>17.)</strong> Set everything up the way you like it, free from the control of the hands of PLDT. Go wild!</p>
+<p><strong>18.)</strong> Make sure to disable everything remote control related. TR-069, ACL, Remote access, etc.</p>
+<p><strong>19.)</strong> Plug in your optical cable again. Expect to get locked out after a few minutes again.
+Just do this tutorial again if you ever need to regain adminpldt.</p>
+<p><strong>20.)</strong> Tutorial finished.</p>
+<p>Extra anti-update measures for the paranoid, and also prevents you from being locked out again:</p>
+<p>Forward ports 25, 6129, and 7547 to an unused IP address. (May or may not work)</p>
+<h2 id="screenshots">Screenshots</h2>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/01.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/02.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/03.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-web-interface-admin-access/04.png" alt="" /></p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

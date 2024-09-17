@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Powershell Windows 10 update</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2019-04-13</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Windows 10 upgrade woes</p>
+<p>Start powershell as admin with unrestricted script policy</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>powershell -executionpolicy unrestricted
+</span></code></pre>
+<p>Install windows update powershell module</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>install-module pswindowsupdate
+</span></code></pre>
+<p>Get updates available for your pc</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>get-windowsupdate
+</span></code></pre>
+<p>Install updates available</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>install-windowsupdate
+</span></code></pre>
+<p>Or</p>
+<p>Get updates and automatically install accept and reboot pc</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>get-windowsupdate -install -acceptall -autoreboot
+</span></code></pre>
+<p>One liner</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>powershell -executionpolicy unrestricted -command &quot;install-packageprovider -name nuget -force -verbose; install-module pswindowsupdate -force -verbose; get-windowsupdate -install -acceptall -autoreboot -verbose&quot;
+</span></code></pre>
+<p>Note:</p>
+<p>Import module before <code>get-windowsupdate</code> if pswindowsupdate is already installed</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>import-module pswindowsupdate
+</span></code></pre>
+<p>Update 2021-07-22</p>
+<p>Specify TLS 1.2 for the .net Security protocol</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>powershell -executionpolicy unrestricted -command &quot;[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; install-packageprovider -name nuget -force -verbose; install-module pswindowsupdate -force -verbose; get-windowsupdate -install -acceptall -autoreboot -verbose&quot;
+</span></code></pre>
+<p>References:</p>
+<p><a href="https://www.altaro.com/msp-dojo/powershell-windows-updates">https://www.altaro.com/msp-dojo/powershell-windows-updates</a></p>
+<p><a href="https://superuser.com/questions/462425/can-i-get-more-information-on-what-windows-update-is-doing">https://superuser.com/questions/462425/can-i-get-more-information-on-what-windows-update-is-doing</a></p>
+<p><a href="https://stackoverflow.com/a/65207763">https://stackoverflow.com/a/65207763</a></p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

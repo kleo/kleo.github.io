@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Default WiFi passwords</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2017-08-22</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+<h2 id="toc-title">Contents</h2>
+<ul>
+    
+        <li>
+            <a href="https://kleo.hak.dog/default-wifi-passwords/#introduction">Introduction</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/default-wifi-passwords/#pldt-zxhn-h108n">PLDT ZXHN H108N</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/default-wifi-passwords/#iterations-on-pldt-routers">Iterations on PLDT routers</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/default-wifi-passwords/#inverted-mac-hex-value">Inverted MAC hex value</a>
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/default-wifi-passwords/#epon-onu">EPON ONU</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/default-wifi-passwords/#globe-prolink-h5400nk-adsl-wireless-modem">Globe PROLiNK H5400NK ADSL Wireless Modem</a>
+            
+        </li>
+    
+  </ul>
+
+
+<h2 id="introduction">Introduction</h2>
+<p>Living today without WiFi disconnects us from the world. While there are so many WiFi access points all around us, we can't connect to them because they're secured with a password, but we won't bother asking for the WiFi password.</p>
+<p>Let's connect to wireless access points that still have default passwords configured.</p>
+<p>After a router has been setup by the Internet service provider here in the Philippines, ideally they tell you to change the WiFi password, but still many routers go used everyday and still have their default WiFi password configuration.</p>
+<p>To change the WiFi password mind you, using the router's web interface, typing in the router's IP address on a web browser. Then after going to addresses, you login using their default login credentials, go to wireless configuration optionally set security options and changing the WiFi password.</p>
+<p>Too easy for the end user?</p>
+<p>To identify the router's default WiFi password we need an application, preferably using an Android phone to scan for wireless access points currently around.</p>
+<p>No need for apps with fancy names like "WiFi Password Hacker", those will just simply disappoint you and even contain malware.</p>
+<p>Using an Android phone with <a href="https://play.google.com/store/apps/details?id=ua.com.streamsoft.pingtools">PingTools</a>, available on Google Play for free or using an Android phone with <a href="https://play.google.com/store/apps/details?id=com.vrem.wifianalyzer">WiFi Analyzer</a>, an open source application available on Google Play for free. <a href="https://github.com/VREMSoftwareDevelopment/WiFiAnalyzer">Source</a>.</p>
+<p>After scanning, we can view the router's Service Set Identifier (SSID) or the name of the WiFi network, and it's Basic Service Set Identifier (BSSID) or MAC address of the router.</p>
+<p>We can now use that to connect to our prefered WiFi access point.</p>
+<h2 id="pldt-zxhn-h108n">PLDT ZXHN H108N</h2>
+<p>Using PingTools WiFi scanner, we can see the MAC address of the router and we can now identify the router's default WiFi password configuration.</p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/01.png" alt="" /></p>
+<p>Now lets combine them</p>
+<p>SSID: PLDTHOMEDSL_4A16E</p>
+<p>MAC: 94:A7:B7:34:A1:6E</p>
+<p>PLDTWIFI + Last 5 characters of MAC address uppercase</p>
+<p>Password: PLDTWIFI4A16E</p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/02.png" alt="" /></p>
+<h2 id="iterations-on-pldt-routers">Iterations on PLDT routers</h2>
+<p>SSID: PLDTHOMEFIBR + 4A16E(Last 5 characters of MAC address uppercase)
+Password: PLDTWIFI + B5E91(Last 5 characters inverted MAC hex value uppercase)</p>
+<p>SSID: PLDTmyDSLPAL
+Password: PLDTWIFI + Last 5 characters of MAC address uppercase</p>
+<p>SSID: PLDTmyDSLBiz
+Password: PLDTWIFI + Last 5 characters of MAC address uppercase</p>
+<p>SSID: PLDTHOMEFIBR + Last 5 characters of MAC address
+Password: wlan + Last 5 characters of inverted MAC hex value
+Password-Example: wlanB5E91</p>
+<p>SSID: HomeBro_Ultera
+Password: HomeBro_ + Last 6 characters inverted MAC hex value
+Password-Example: HomeBro_CB5E91</p>
+<h3 id="inverted-mac-hex-value">Inverted MAC hex value</h3>
+<p>0 - F</p>
+<p>1 - E</p>
+<p>2 - D</p>
+<p>3 - C</p>
+<p>4 - B</p>
+<p>5 - A</p>
+<p>6 - 9</p>
+<p>7 - 8</p>
+<p>8 - 7</p>
+<p>9 - 6</p>
+<p>A - 5</p>
+<p>B - 4</p>
+<p>C - 3</p>
+<p>D - 2</p>
+<p>E - 1</p>
+<p>F - 0</p>
+<h2 id="epon-onu">EPON ONU</h2>
+<p>An example with routers that are rearranging parts of the MAC address as default WiFi password.</p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/03.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/04.png" alt="" /></p>
+<h2 id="globe-prolink-h5400nk-adsl-wireless-modem">Globe PROLiNK H5400NK ADSL Wireless Modem</h2>
+<p>On Globe routers, placing the word "WIFI" in between the last 6 characters of its MAC.</p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/05.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/06.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/default-wifi-passwords/07.png" alt="" /></p>
+<p>A reminder to change your router's passwords folks, enjoy~</p>
+<p>References: <a href="https://www.mobilarian.com/showthread.php?t=1255249&amp;p=20734036&amp;viewfull=1#post20734036">Symbianize (Mobilarian)</a></p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

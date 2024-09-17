@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Termux Selfhost Android 5 and 6 Legacy Packages</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2022-03-11</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>Termux Selfhost Android 5 and 6 Legacy Packages</p>
+<p>Termux has long dropped support for Android 5 and 6 but still have provided legacy packages on termux.net. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>Here's a guide on setting up a local mirror</p>
+<p>Download the packages archive termux-repositories-legacy-24.12.2019.tar <sup class="footnote-reference"><a href="#2">2</a></sup></p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span># on termux 0.75 fdroid archive
+</span><span>
+</span><span>export EDITOR=vi
+</span><span>apt edit-sources
+</span><span>
+</span><span># configure local mirror
+</span><span>deb http://192.168.1.250/termux-packages stable main
+</span><span>
+</span><span># comment game.list/science.list sources
+</span><span>
+</span><span>vi ../usr/etc/apt/sources.list.d/game.list
+</span><span>vi ../usr/etc/apt/sources.list.d/science.list
+</span><span>
+</span><span># on computer
+</span><span># extract termux-repositories-legacy-24.12.2019.tar
+</span><span>cd termux-repositories-legacy/webroot
+</span><span>sudo python3 -m http.server --bind 0.0.0.0 80
+</span><span>
+</span><span># on termux
+</span><span>pkg update
+</span><span>pkg install openssh
+</span></code></pre>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://github.com/termux/termux-packages/issues/4467">End of android-5/6 (termux.net) support on 2020-01-01</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p><a href="https://archive.org/details/termux-repositories-legacy">archive.org Termux app and packages for legacy Android OS</a></p>
+</div>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">PLDT Home Fiber router hacking</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2018-05-20</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+<h2 id="toc-title">Contents</h2>
+<ul>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-hacking/#hidden-urls-looking-for-advanced-settings-on-the-web-interface">Hidden urls - looking for advanced settings on the web interface</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-hacking/#scanning-for-urls">Scanning for urls</a>
+            
+        </li>
+    
+        <li>
+            <a href="https://kleo.hak.dog/pldt-home-fiber-router-hacking/#all-hope-is-not-lost">All hope is not lost</a>
+            
+                <ul>
+                    
+                        <li>
+                            <a href="https://kleo.hak.dog/pldt-home-fiber-router-hacking/#console-access">Console access</a>
+                        </li>
+                    
+                </ul>
+            
+        </li>
+    
+  </ul>
+
+
+<p>A walkthrough on my current progress on hacking the PLDT FIBR AN5506-04-FA router RP2616.</p>
+<ul>
+<li><a href="#">Hidden urls</a></li>
+<li><a href="/pldt-home-fiber-router-console-access">Console access</a></li>
+<li><a href="/pldt-home-fiber-router-firmware-and-files">Router firmware and files</a></li>
+<li><a href="/pldt-home-fiber-web-interface-admin-access">Admin access</a></li>
+</ul>
+<h2 id="hidden-urls-looking-for-advanced-settings-on-the-web-interface">Hidden urls - looking for advanced settings on the web interface</h2>
+<p>After a long wait for the ISP to install our new fiber internet connection, finally I can enjoy that 50 Mbps speed at home. The technicians finished setting up the fiber connection, router and phone. They head on home.</p>
+<p>Accessed the web interface on my computer at <strong>192.168.1.1</strong> with the default username <strong>admin</strong> and password <strong>1234</strong>. Initial setup was a breeze, asking for a new admin password, WiFi password for 2.4GHz and 5GHz.</p>
+<p>While all is well first thing I noticed is the very limited settings on its web interface, bummer.</p>
+<h2 id="scanning-for-urls">Scanning for urls</h2>
+<p>So to try a few things, I booted up <a href="https://www.kali.org/">Kali Linux</a> and went on to use <code>dirb</code>, a web content scanner. Basically it looks for existing (and/or hidden) Web Objects.</p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-router-hacking/01.png" alt="" /></p>
+<p>Now looking at the urls, they end with <em>.asp</em>, let's try adding an option to dirb to end with <em>.asp</em> file extension.</p>
+<p><img src="https://kleo.hak.dog/pldt-home-fiber-router-hacking/02.png" alt="" /></p>
+<p>While I found just a couple of additional hidden urls, these won't be enough.</p>
+<h2 id="all-hope-is-not-lost">All hope is not lost</h2>
+<p>Luckily I found a similar router page for the AN5506-04-FA router. You can find the page at <a href="https://hackcorrelation.blogspot.com/2017/07/fiberhome-an5506-02-f-router-hack.html">Hackcorrelation</a>. Mirrors <a href="https://archive.fo/uWVbx">1</a> <a href="https://web.archive.org/web/20180429125804/https://hackcorrelation.blogspot.com/2017/07/fiberhome-an5506-02-f-router-hack.html">2</a></p>
+<p>The article provided me file urls such as <code>http://192.168.1.1/menu/sfu/ph_pldt/hisi5116/voip_dualwifi/sip/1.xml</code> which contained more hidden urls on the router.</p>
+<p>Now I can do so much more, like <strong>port forwarding</strong> and increasing <strong>WiFi power to 200%</strong>!</p>
+<p>I listed all the hidden urls and files at <a href="https://github.com/bkspc/fiberhomesuperadmin/">https://github.com/bkspc/fiberhomesuperadmin/</a></p>
+<h4 id="console-access"><a href="/pldt-home-fiber-router-console-access">Console access</a></h4>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+

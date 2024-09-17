@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  
+  
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/reset.css"/>
+  <link rel="stylesheet" href="https://kleo.hak.dog/css/index.css"/>
+  
+
+  <title>∅</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+      
+
+<table class="header">
+  <tr>
+    <td colspan="2" rowspan="2" class="width-auto">
+      <h1 class="title">Sony DSC-HX100V clean HDMI capture</h1>
+      <span class="subtitle"></span>
+    </td>
+    <th>Version</th>
+    <td class="width-min">v0.1</td>
+  </tr>
+  <tr>
+    <th>Updated</th>
+    <td class="width-min"><time style="white-space: pre;">2022-10-08</time></td>
+  </tr>
+  <tr>
+    <th class="width-min">Author</th>
+    <td class="width-auto"><cite><a href=https:&#x2F;&#x2F;kleo.hak.dog>kleo</a></cite></a></td>
+    <th class="width-min">License</th>
+    <td>MIT</td>
+  </tr>
+</table>
+<label class="debug-toggle-label"><input type="checkbox" class="debug-toggle" /> Debug mode</label>
+<div class="debug-grid"></div>
+
+<!-- <div class="abstract">
+<div class="abstract-title">$abstract-title$</div>
+$abstract$
+</div> -->
+
+
+
+<p>I wanted to try out our family's old camera, a Sony DSC-HX100V as a desktop camera.</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/1.jpg" alt="" /></p>
+<p>Ordered stuff like a HDMI adapter</p>
+<p>Next I looked for a cheap capture card</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/2.jpeg" alt="" /></p>
+<p>I setup OBS Studio and set my camera as a video capture device.</p>
+<p>What was bothering me was the EV value on the bottom right of the screen when getting the capture. As there isn't any option to remove it.</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/3.png" alt="" /></p>
+<p>I tried using the OBS Studio filter crop at first but I needed a much effective solution.</p>
+<p>I found <a href="https://github.com/ma1co/Sony-PMCA-RE/">Sony-PMCA-RE</a> which is a tool that interfaces with Sony digital cameras through USB. It allows to tweak settings, dump firmware, and in some cases install custom Android apps.</p>
+<p>Followed through <a href="https://github.com/ma1co/Sony-PMCA-RE/issues/313">Clean HDMI for DSC-HX200V</a> and <a href="https://github.com/ma1co/Sony-PMCA-RE/issues/314">Support for DSC-HX100V</a>.</p>
+<p>First I tried to run the commands on using <code>python pmca-console.py updatershell</code> but it updates the firmware which in turn loses the changes that I made. I could still backup the relevant files.</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/6.png" alt="" /></p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/7.png" alt="" /></p>
+<p>Next I had to try <code>python pmca-console.py serviceshell</code>. The address <code>0x01070330</code> is for removing the EV value from the screen. This will also lock exposure value to zero.</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/4.png" alt="" /></p>
+<p>Changes I make now persists even after battery removal. Thank you for a well documented guide!</p>
+<p><img src="https://kleo.hak.dog/sony-dsc-hx100v-clean-hdmi-capture/5.png" alt="" /></p>
+<p>Configured the camera on movie mode and set scene to landscape to avoid face detection.</p>
+<p>Now I finally have clean HDMI capture!</p>
+
+
+    </div>
+  </section>
+
+  <script src="https://kleo.hak.dog/js/index.js"></script> 
+</body>
+
+</html>
+
