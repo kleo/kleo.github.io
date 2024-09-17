@@ -1,5 +1,7 @@
 # The URL the site will be built for
 base_url = "https://kleo.hak.dog"
+theme = "the-monospace-web"
+author = "kleo"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
