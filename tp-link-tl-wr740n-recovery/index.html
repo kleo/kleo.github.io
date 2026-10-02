@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TP-Link TL-WR740N Recovery · ∅</title>
+  <link rel="stylesheet" href="https://kleo.hak.dog/style.css">
+</head>
+<body>
+  <header><a href="https://kleo.hak.dog">∅</a></header>
+  <main>
+    
+<article>
+  <h1>TP-Link TL-WR740N Recovery</h1>
+  <p class="meta"><time>2021-03-13</time></p>
+  <p>I have an old TP-Link TL-WR740N that was given to me by a friend. After installing OpenWrt I used it as a wireless client to bridge internet connection next door.</p>
+<p>Couldn't install much software though with very limited flash storage and no external USB port.</p>
+<p>We removed it some time after I purchased outdoor ethernet cables.</p>
+<p>Thing died probably after an interrupted reset.</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/1.png" alt="" /></p>
+<p>Good thing there was a recovery guide OpenWrt <a rel="external" href="https://openwrt.org/toh/tp-link/tl-wr740n">TP-Link TL-WR740N</a></p>
+<p>Very dusty</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/2.jpg" alt="" /></p>
+<p>Soldering twisted pair as cables so we can have serial console</p>
+<blockquote>
+<p>TX pin is not connected to the CPU. In order to make the TX line working, the two points on the bottom side of the PCB must be connected with a small wire. The pin at the SOC is labeled TP18, the one at the serial connector is labeled TP28.</p>
+</blockquote>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/3.jpg" alt="" /></p>
+<p>A look at my workbench</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/4.jpg" alt="" /></p>
+<p>Hooking it up to my computer</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/5.jpg" alt="" /></p>
+<p>dnsmasq tftp config</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>dhcp-range=192.168.1.2,192.168.1.254,12h</span></span>
+<span class="giallo-l"><span>enable-tftp</span></span>
+<span class="giallo-l"><span>tftp-root=/home/kbeflo/tftp</span></span></code></pre>
+<p>start dnsmasq</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>sudo dnsmasq -C tftboot.conf</span></span></code></pre>
+<p>start tftpboot on the device etc.</p>
+<p><img src="https://kleo.hak.dog/tp-link-tl-wr740n-recovery/6.png" alt="" /></p>
+<p>Success~</p>
+
+</article>
+
+  </main>
+</body>
+</html>

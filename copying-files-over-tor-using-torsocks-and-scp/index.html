@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Copying files over Tor using torsocks and scp · ∅</title>
+  <link rel="stylesheet" href="https://kleo.hak.dog/style.css">
+</head>
+<body>
+  <header><a href="https://kleo.hak.dog">∅</a></header>
+  <main>
+    
+<article>
+  <h1>Copying files over Tor using torsocks and scp</h1>
+  <p class="meta"><time>2018-09-26</time></p>
+  <p>If you haven't setup a Tor service on machine follow the link below.</p>
+<p><a rel="external" href="https://www.torproject.org/docs/debian.html.en">Setting up Tor on your machine on Torproject.org</a></p>
+<p><a rel="external" href="https://www.torproject.org/docs/tor-onion-service.html.en">Setting up Tor hidden service</a></p>
+<p>We'll take advantage on port forwarding your ssh port 22 using a Tor hidden service.</p>
+<p>To copy files or directories over Tor we need to use <code>torsocks</code> to communicate with the remote machine.</p>
+<p>For files</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>torsocks scp file kbeflo@hostname.onion:/home/kbeflo/</span></span></code></pre>
+<p>For directories</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>torsocks scp -r directory/ kbeflo@hostname.onion:/home/kbeflo/</span></span></code></pre>
+<p>The hidden service will show password prompt for your username and will copy the files after.</p>
+<p>Note that you have to change the username and hostname on your side. As an example I used my username and placeholder hostname.onion.</p>
+
+</article>
+
+  </main>
+</body>
+</html>

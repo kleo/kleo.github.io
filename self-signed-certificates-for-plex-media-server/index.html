@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Self-signed Certificates for Plex Media Server · ∅</title>
+  <link rel="stylesheet" href="https://kleo.hak.dog/style.css">
+</head>
+<body>
+  <header><a href="https://kleo.hak.dog">∅</a></header>
+  <main>
+    
+<article>
+  <h1>Self-signed Certificates for Plex Media Server</h1>
+  <p class="meta"><time>2019-04-14</time></p>
+  <p>Create key and certificate</p>
+<p>Create PKCS12 certificate</p>
+<p>Get ProcessedMachineIdentifier</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>cat /config/Library/Application\ Support/Plex\ Media\ Server\Preferences.xml</span></span></code></pre>
+<p>Example: ProcessedMachineIdentifier="2cbc18598cd802a9d856dabdd52bf29b4r0e24gq"</p>
+<p>Create private key using pem2plex.py</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>wget https://raw.githubusercontent.com/sadsfae/misc-scripts/master/python/pem2plex.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>python pem2plex.py plex.crt plex.key 2cbc18598cd802a9d856dabdd52bf29b4r0e24gq</span></span></code></pre>
+<p>This will generate a long hash. Save it we'll need it later.</p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span>d145ed250dfbd97fbc6e27b40b9c1e9bc83e541b43696f6535cd08abfe7d7ff97f3022ef848f0a27a5d75083ef191dd3da970aeb237c8d2c67c6af834379674b</span></span></code></pre>
+<p>We now have certificate.p12 and the long hash (passphrase) above.</p>
+<p>Install certificate in Plex</p>
+<p>Login to Plex and go to Settings-&gt;Server-&gt;Network</p>
+<p>Insert the path where you placed certificate.p12 i.e /etc/ssl/private/plex/certificate.p12</p>
+<p>Insert the long hash on Custom certificate encryption key</p>
+<p>Source: <a rel="external" href="https://hobo.house/2016/11/11/how-to-use-self-signed-ssl-certificates-for-plex-media-server/">How to Use Self-signed SSL Certificates for Plex Media Server</a> <a rel="external" href="https://archive.fo/mMcFi">archive</a></p>
+
+</article>
+
+  </main>
+</body>
+</html>

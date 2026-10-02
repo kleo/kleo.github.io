@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Termux Selfhost Android 5 and 6 Legacy Packages · ∅</title>
+  <link rel="stylesheet" href="https://kleo.hak.dog/style.css">
+</head>
+<body>
+  <header><a href="https://kleo.hak.dog">∅</a></header>
+  <main>
+    
+<article>
+  <h1>Termux Selfhost Android 5 and 6 Legacy Packages</h1>
+  <p class="meta"><time>2022-03-11</time></p>
+  <p>Termux Selfhost Android 5 and 6 Legacy Packages</p>
+<p>Termux has long dropped support for Android 5 and 6 but still have provided legacy packages on termux.net. <sup class="footnote-reference"><a href="#1">1</a></sup></p>
+<p>Here's a guide on setting up a local mirror</p>
+<p>Download the packages archive termux-repositories-legacy-24.12.2019.tar <sup class="footnote-reference"><a href="#2">2</a></sup></p>
+<pre class="giallo" style="color: #E1E4E8; background-color: #24292E;" ><code data-lang="plain"><span class="giallo-l"><span># on termux 0.75 fdroid archive</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>export EDITOR=vi</span></span>
+<span class="giallo-l"><span>apt edit-sources</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># configure local mirror</span></span>
+<span class="giallo-l"><span>deb http://192.168.1.250/termux-packages stable main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># comment game.list/science.list sources</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>vi ../usr/etc/apt/sources.list.d/game.list</span></span>
+<span class="giallo-l"><span>vi ../usr/etc/apt/sources.list.d/science.list</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># on computer</span></span>
+<span class="giallo-l"><span># extract termux-repositories-legacy-24.12.2019.tar</span></span>
+<span class="giallo-l"><span>cd termux-repositories-legacy/webroot</span></span>
+<span class="giallo-l"><span>sudo python3 -m http.server --bind 0.0.0.0 80</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># on termux</span></span>
+<span class="giallo-l"><span>pkg update</span></span>
+<span class="giallo-l"><span>pkg install openssh</span></span></code></pre>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a rel="external" href="https://github.com/termux/termux-packages/issues/4467">End of android-5/6 (termux.net) support on 2020-01-01</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p><a rel="external" href="https://archive.org/details/termux-repositories-legacy">archive.org Termux app and packages for legacy Android OS</a></p>
+</div>
+
+</article>
+
+  </main>
+</body>
+</html>
