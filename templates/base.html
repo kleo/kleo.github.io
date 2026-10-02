@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.author }}{% endblock title %}</title>
+  <link rel="stylesheet" href="{{ get_url(path='style.css') | safe }}">
+</head>
+<body>
+  <header><a href="{{ config.base_url | safe }}">{{ config.author }}</a></header>
+  <main>
+    {% block content %}{% endblock content %}
+  </main>
+</body>
+</html>

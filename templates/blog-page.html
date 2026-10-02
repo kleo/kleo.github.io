@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.author }}{% endblock title %}
+
+{% block content %}
+<article>
+  <h1>{{ page.title }}</h1>
+  <p class="meta"><time>{{ page.date }}</time>{% if page.description %} · {{ page.description }}{% endif %}</p>
+  {{ page.content | safe }}
+</article>
+{% endblock content %}
